@@ -1,18 +1,16 @@
-# abhinavtrip3.space
+# abhinavtrip3.space — The Illustrated Journal
 
-Interactive cartoon science-fiction portfolio for **Abhinav Tripathi**.
-
-Visitors arrive in an illustrated laboratory, meet guide robot **B-3**, activate project machines, travel through portals, and explore destination universes.
+Personal portfolio for **Abhinav Tripathi**: an editorial, comic-tinged digital journal and project library.
 
 ## Stack
 
-- Next.js (App Router) + TypeScript
+- Next.js App Router + TypeScript
 - Tailwind CSS
-- Framer Motion
-- GSAP (available for cinematic timelines)
-- Original SVG environments
+- Framer Motion (available for interactions)
+- next-themes
+- Lucide icons
 
-## Development
+## Develop
 
 ```bash
 npm install
@@ -24,13 +22,24 @@ npm run lint
 npm run build
 ```
 
-## Milestone 1
+## Content
 
-- Arrival intro with skip
-- Laboratory with five project machines
-- Portal activation + wormhole facts
-- Forge and SimpleStore destinations
-- Coming-soon placeholders for Snip, InvestWise, FooOO
-- Mobile-first interactions + reduced-motion support
+Edit typed content in:
 
-Project content lives in `src/data/projects.ts` so new machines can be added without rewriting the experience shell.
+- `src/data/projects.ts`
+- `src/data/experience.ts`
+- `src/data/articles.ts`
+- `src/data/skills.ts`
+- `src/data/social.ts`
+
+Replace placeholder email, GitHub, LinkedIn, and add `public/resume.pdf` when ready.
+
+## Routes
+
+- `/` — homepage journal
+- `/work` — project archive
+- `/work/[slug]` — case studies
+- `/experience` — career timeline
+- `/engineering` — notes placeholders
+- `/about`
+- `/contact`

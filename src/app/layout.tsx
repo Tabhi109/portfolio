@@ -1,47 +1,67 @@
 import type { Metadata, Viewport } from "next";
-import { Fredoka, Nunito } from "next/font/google";
+import { IBM_Plex_Mono, Inter, Space_Grotesk } from "next/font/google";
+import { AppShell } from "@/components/layout/AppShell";
+import { ThemeProvider } from "@/components/layout/ThemeProvider";
+import { SITE } from "@/data/social";
 import "./globals.css";
 
-const fredoka = Fredoka({
-  variable: "--font-fredoka",
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  variable: "--font-space-grotesk",
 });
 
-const nunito = Nunito({
-  variable: "--font-nunito",
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-inter",
+});
+
+const ibmPlexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-ibm-plex-mono",
 });
 
 export const metadata: Metadata = {
-  title: "abhinavtrip3.space — Abhinav's Laboratory",
-  description:
-    "An interactive cartoon science-fiction portfolio. Explore Abhinav Tripathi's laboratory of experimental machines with guide robot B-3.",
-  metadataBase: new URL("https://abhinavtrip3.space"),
+  metadataBase: new URL(`https://${SITE.domain}`),
+  title: {
+    default: `${SITE.name} — Illustrated Journal`,
+    template: `%s · ${SITE.name}`,
+  },
+  description: SITE.tagline,
   openGraph: {
-    title: "abhinavtrip3.space",
-    description:
-      "Enter the laboratory. Activate a machine. Fall through a portal.",
+    title: `${SITE.name} — Illustrated Journal`,
+    description: SITE.tagline,
+    url: `https://${SITE.domain}`,
+    siteName: SITE.domain,
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${SITE.name} — Illustrated Journal`,
+    description: SITE.tagline,
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#07141f",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#F5F3EC" },
+    { media: "(prefers-color-scheme: dark)", color: "#141513" },
+  ],
   width: "device-width",
   initialScale: 1,
-  maximumScale: 5,
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${fredoka.variable} ${nunito.variable} h-full antialiased`}
+      suppressHydrationWarning
+      className={`${spaceGrotesk.variable} ${inter.variable} ${ibmPlexMono.variable} h-full`}
     >
-      <body className="min-h-full flex flex-col bg-ink-deep text-cream-ink">
-        {children}
+      <body className="min-h-full flex flex-col bg-bg text-text antialiased">
+        <ThemeProvider>
+          <AppShell>{children}</AppShell>
+        </ThemeProvider>
       </body>
     </html>
   );

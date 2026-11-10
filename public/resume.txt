@@ -1,0 +1,4 @@
+Resume PDF placeholder.
+
+Replace this with resume.pdf and keep SOCIAL resumePath pointing to /resume.pdf
+in src/data/social.ts when the real file is ready.
