@@ -4,22 +4,24 @@ export const PRIMARY_TECHNOLOGIES = [
   "Python",
   "C++",
   "TypeScript",
+  "JavaScript",
   "React",
   "Next.js",
   "FastAPI",
   "Django",
+  "Node.js",
   "PostgreSQL",
+  "MongoDB",
   "Redis",
 ] as const;
 
 export const INTEREST_AREAS = [
-  "Backend engineering",
+  "Backend architecture",
   "Distributed systems",
-  "System design",
-  "Full-stack development",
-  "Developer tooling",
+  "Workflow orchestration",
   "Static analysis",
-  "AI developer tooling",
+  "System design",
+  "Developer tooling",
 ] as const;
 
 export const PERSONAL_INTERESTS = [

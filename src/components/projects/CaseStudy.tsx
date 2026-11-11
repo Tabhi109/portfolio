@@ -50,11 +50,7 @@ export function CaseStudy({ project }: { project: Project }) {
                   >
                     GitHub
                   </a>
-                ) : (
-                  <span className="rounded-full border border-dashed border-border px-4 py-2 text-sm text-text-muted">
-                    GitHub URL placeholder
-                  </span>
-                )}
+                ) : null}
                 {project.links.live ? (
                   <a
                     href={project.links.live}
@@ -64,11 +60,7 @@ export function CaseStudy({ project }: { project: Project }) {
                   >
                     Live demo
                   </a>
-                ) : (
-                  <span className="rounded-full border border-dashed border-border px-4 py-2 text-sm text-text-muted">
-                    Live demo placeholder
-                  </span>
-                )}
+                ) : null}
                 <Link
                   href="/work"
                   className="rounded-full border border-border px-4 py-2 text-sm"
@@ -107,8 +99,8 @@ export function CaseStudy({ project }: { project: Project }) {
               ) : project.slug === "simplestore" ? (
                 <SimpleStoreArchitecture />
               ) : (
-                <div className="bg-bg-muted px-5 py-10 text-sm text-text-muted">
-                  Architecture diagram placeholder for {project.name}.
+                <div className="bg-bg-muted px-5 py-8 text-sm leading-relaxed text-text-muted">
+                  {project.caseStudy.architecture}
                 </div>
               )}
             </div>

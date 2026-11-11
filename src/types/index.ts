@@ -50,13 +50,19 @@ export interface ExperienceRole {
   technologies: string[];
 }
 
-export interface ArticlePreview {
+export interface ArticleSection {
+  heading: string;
+  paragraphs: string[];
+}
+
+export interface Article {
   slug: string;
   title: string;
   summary: string;
   category: string;
   date: string;
-  status: "published" | "draft" | "placeholder";
+  status: "published";
+  sections: ArticleSection[];
 }
 
 export interface SocialLink {

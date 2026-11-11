@@ -16,9 +16,9 @@ export default function ExperiencePage() {
           Suggaa → Opus
         </h1>
         <p className="mt-4 text-base leading-relaxed text-text-muted sm:text-lg">
-          A scannable story of professional progression. Expand any chapter for
-          responsibilities, contributions, and technologies — without invented
-          metrics.
+          From internship to Node.js backend work at Suggaa, then into software
+          engineering at Opus. Expand any chapter for responsibilities and
+          contributions.
         </p>
       </header>
       <div className="mt-12">

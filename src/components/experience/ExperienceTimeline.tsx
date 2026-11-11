@@ -59,23 +59,39 @@ export function ExperienceTimeline() {
                     </ul>
                   </div>
                   <div>
-                    <p className="eyebrow">Key contributions</p>
-                    <ul className="mt-2 space-y-2 text-sm leading-relaxed">
-                      {role.contributions.map((item) => (
-                        <li key={item}>• {item}</li>
-                      ))}
-                    </ul>
-                    <p className="eyebrow mt-5">Technologies</p>
-                    <div className="mt-2 flex flex-wrap gap-2">
-                      {role.technologies.map((tech) => (
-                        <span
-                          key={tech}
-                          className="rounded-full border border-border px-2.5 py-1 font-mono text-[11px] text-text-muted"
+                    {role.contributions.length > 0 ? (
+                      <>
+                        <p className="eyebrow">Key contributions</p>
+                        <ul className="mt-2 space-y-2 text-sm leading-relaxed">
+                          {role.contributions.map((item) => (
+                            <li key={item}>• {item}</li>
+                          ))}
+                        </ul>
+                      </>
+                    ) : null}
+                    {role.technologies.length > 0 ? (
+                      <>
+                        <p
+                          className={
+                            role.contributions.length > 0
+                              ? "eyebrow mt-5"
+                              : "eyebrow"
+                          }
                         >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
+                          Technologies
+                        </p>
+                        <div className="mt-2 flex flex-wrap gap-2">
+                          {role.technologies.map((tech) => (
+                            <span
+                              key={tech}
+                              className="rounded-full border border-border px-2.5 py-1 font-mono text-[11px] text-text-muted"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                      </>
+                    ) : null}
                   </div>
                 </div>
               ) : null}

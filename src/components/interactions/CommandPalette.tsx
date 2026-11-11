@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowUpRight, FileText, FolderKanban, Mail, Search } from "lucide-react";
+import { ARTICLES } from "@/data/articles";
 import { PROJECTS } from "@/data/projects";
 import { NAV_LINKS, SITE, SOCIAL_LINKS } from "@/data/social";
 import { cn } from "@/lib/cn";
@@ -48,6 +49,14 @@ function CommandPaletteDialog({ onClose }: { onClose: () => void }) {
       group: "Projects",
     }));
 
+    const notes = ARTICLES.map((article) => ({
+      id: `article-${article.slug}`,
+      label: article.title,
+      hint: article.category,
+      href: `/engineering/${article.slug}`,
+      group: "Engineering",
+    }));
+
     const actions: CommandItem[] = [
       {
         id: "experience",
@@ -61,14 +70,17 @@ function CommandPaletteDialog({ onClose }: { onClose: () => void }) {
         href: "/contact",
         group: "Actions",
       },
-      {
-        id: "resume",
-        label: "Download resume",
-        hint: "PDF placeholder",
-        href: SITE.resumePath,
-        group: "Actions",
-        external: true,
-      },
+      ...(SITE.resumePath
+        ? [
+            {
+              id: "resume",
+              label: "Download resume",
+              href: SITE.resumePath,
+              group: "Actions",
+              external: true,
+            } satisfies CommandItem,
+          ]
+        : []),
       ...SOCIAL_LINKS.filter((link) => link.label !== "Resume").map((link) => ({
         id: `social-${link.label}`,
         label: link.label,
@@ -78,7 +90,7 @@ function CommandPaletteDialog({ onClose }: { onClose: () => void }) {
       })),
     ];
 
-    const all = [...nav, ...projects, ...actions];
+    const all = [...nav, ...projects, ...notes, ...actions];
     const normalized = query.trim().toLowerCase();
     if (!normalized) return all;
     return all.filter(

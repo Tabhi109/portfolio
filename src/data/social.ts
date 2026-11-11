@@ -9,29 +9,45 @@ export const SITE = {
     "An unfinished collection of things I've built, things I've learned, and things I'm curious about.",
   intro:
     "I'm Abhinav, a software engineer who enjoys building systems, exploring complex problems, and turning ideas into working products.",
-  email: "hello@abhinavtrip3.space", // placeholder — replace with real email
-  resumePath: "/resume.pdf", // placeholder file until real resume is added
+  /** Leave empty until a real address is confirmed — never invent one. */
+  email: "",
+  /** Point to /resume.pdf once the file exists in /public. */
+  resumePath: "",
+  githubUrl: "https://github.com/Tabhi109",
+  linkedinUrl: "",
 } as const;
 
 export const SOCIAL_LINKS: SocialLink[] = [
   {
     label: "GitHub",
-    href: "https://github.com/", // placeholder
+    href: SITE.githubUrl,
     external: true,
   },
-  {
-    label: "LinkedIn",
-    href: "https://linkedin.com/in/", // placeholder
-    external: true,
-  },
-  {
-    label: "Email",
-    href: "mailto:hello@abhinavtrip3.space", // placeholder
-  },
-  {
-    label: "Resume",
-    href: "/resume.pdf", // placeholder
-  },
+  ...(SITE.linkedinUrl
+    ? [
+        {
+          label: "LinkedIn",
+          href: SITE.linkedinUrl,
+          external: true,
+        } satisfies SocialLink,
+      ]
+    : []),
+  ...(SITE.email
+    ? [
+        {
+          label: "Email",
+          href: `mailto:${SITE.email}`,
+        } satisfies SocialLink,
+      ]
+    : []),
+  ...(SITE.resumePath
+    ? [
+        {
+          label: "Resume",
+          href: SITE.resumePath,
+        } satisfies SocialLink,
+      ]
+    : []),
 ];
 
 export const NAV_LINKS = [

@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { ARTICLES } from "@/data/articles";
 import { INTEREST_AREAS } from "@/data/skills";
 
 export const metadata: Metadata = {
   title: "Engineering",
   description:
-    "Engineering interests and placeholder notes on systems, tooling, and architecture.",
+    "Engineering notes on code intelligence, workflow orchestration, and systems languages.",
 };
 
 export default function EngineeringPage() {
@@ -14,11 +15,11 @@ export default function EngineeringPage() {
       <header className="max-w-3xl">
         <p className="eyebrow">Engineering notes</p>
         <h1 className="mt-3 font-display text-4xl font-semibold tracking-tight sm:text-5xl">
-          Research notebooks
+          A small technical notebook
         </h1>
         <p className="mt-4 text-base leading-relaxed text-text-muted sm:text-lg">
-          Topics I care about writing through carefully. No fabricated essays —
-          only reserved slots and honest placeholders.
+          Published notes only — each one tied to work I have actually been
+          doing across Forge, Snip, financial backends, and systems languages.
         </p>
       </header>
 
@@ -38,20 +39,22 @@ export default function EngineeringPage() {
 
       <section className="mt-12 grid gap-4 md:grid-cols-2">
         {ARTICLES.map((article) => (
-          <article key={article.slug} className="surface-card rounded-2xl p-6">
+          <Link
+            key={article.slug}
+            href={`/engineering/${article.slug}`}
+            className="surface-card rounded-2xl p-6 transition hover:border-accent-orange"
+          >
             <p className="eyebrow">
-              {article.category} · {article.status}
+              {article.category} · {article.date}
             </p>
-            <h2 className="mt-2 font-display text-2xl font-semibold">
+            <h2 className="mt-3 font-display text-2xl font-semibold">
               {article.title}
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-text-muted">
               {article.summary}
             </p>
-            <p className="mt-4 font-mono text-[11px] text-text-muted">
-              MDX-ready slot · content not written yet
-            </p>
-          </article>
+            <p className="mt-5 text-sm text-accent-orange">Open article →</p>
+          </Link>
         ))}
       </section>
     </main>

@@ -16,17 +16,19 @@ export function ContactCTA() {
             product collaboration, and freelance enquiries.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <a
-              href={`mailto:${SITE.email}`}
-              className="rounded-full bg-text px-5 py-2.5 text-sm font-medium text-bg hover:bg-accent-orange"
-            >
-              {SITE.email}
-            </a>
+            {SITE.email ? (
+              <a
+                href={`mailto:${SITE.email}`}
+                className="rounded-full bg-text px-5 py-2.5 text-sm font-medium text-bg hover:bg-accent-orange"
+              >
+                Email me
+              </a>
+            ) : null}
             {SOCIAL_LINKS.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className="rounded-full border border-border bg-bg-elevated px-4 py-2.5 text-sm text-text-muted hover:border-accent-orange hover:text-text"
+                className="rounded-full border border-border bg-bg-elevated px-4 py-2.5 text-sm hover:border-accent-orange"
                 {...(link.external
                   ? { target: "_blank", rel: "noreferrer" }
                   : {})}
@@ -36,15 +38,11 @@ export function ContactCTA() {
             ))}
             <Link
               href="/contact"
-              className="rounded-full border border-transparent px-4 py-2.5 text-sm text-accent-orange underline-offset-4 hover:underline"
+              className="rounded-full border border-border bg-bg-elevated px-4 py-2.5 text-sm hover:border-accent-orange"
             >
-              Contact page →
+              Contact page
             </Link>
           </div>
-          <p className="mt-4 font-mono text-[11px] text-text-muted">
-            Email, social, and resume links are placeholders until real details
-            are added.
-          </p>
         </div>
       </div>
     </section>
